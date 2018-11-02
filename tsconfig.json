@@ -11,6 +11,7 @@
     "lib": [ "es2015", "dom", "ES2015", "esnext.promise" ],
     "noImplicitAny": true,
     "noImplicitThis": true,
+    "noStrictGenericChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "jsx": "react",
     "typeRoots": [
