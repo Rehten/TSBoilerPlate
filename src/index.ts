@@ -1,9 +1,8 @@
-import {TestScheduler} from 'rxjs/testing'
+import { TestScheduler } from 'rxjs/testing'
+import './index123.js'
 
 let scheduler: TestScheduler = new TestScheduler((actual, expected) => {
   console.log(123)
 })
 
-scheduler.run(helpers => {
-  helpers.cold()
-})
+console.log(scheduler)

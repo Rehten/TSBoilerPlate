@@ -4,5 +4,6 @@
     "no-any": true,
     "no-unused-expression": false,
     "semicolon": [true, "never"] 
-  }
+  },
+  "defaultSeverity": "warning"
 }

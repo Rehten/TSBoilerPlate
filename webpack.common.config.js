@@ -25,10 +25,26 @@ module.exports = {
                     {
                         loader: 'awesome-typescript-loader',
                         options: {
-                            transpileOnly: true
+                            transpileOnly: true,
+                            errorsAsWarnings: true
                         }
                     }
                 ]
+            },
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'eslint-loader',
+                include: path.join(__dirname, '/src'),
+                options: {
+                    emitError: false,
+                    emitWarning: true
+                }
+            },
+            {
+                exclude: /node_modules/,
+                test: /\.js$/,
+                loaders: ['babel-loader']
             },
             {
                 enforce: "pre", test: /\.js$/,
