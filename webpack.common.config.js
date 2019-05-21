@@ -19,6 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
+                exclude: /node_modules/,
                 test: /\.ts?$/,
                 include: /src/,
                 use: [
@@ -85,7 +86,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin({
+          cleanOnceBeforeBuildPatterns: ['dist']
+        }),
         new HtmlWebpackPlugin({
             title: '99Production',
             template: 'index.pug',
@@ -96,19 +99,12 @@ module.exports = {
             async: false,
             watch: 'src',
             tsconfig: './../tsconfig.json',
-            tslint: './../tslint.json'
+            tslint: './../tslint.json',
+            exclude: './node_modules/'
         }),
-        new CopyWebpackPlugin([
-            {from:'./assets/',to:'assets'}
-        ]),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackInlineSourcePlugin(),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
-        })
+        new HtmlWebpackInlineSourcePlugin()
     ],
     resolve: {
         extensions: ['.ts', '.js', '.json', 'pug']
